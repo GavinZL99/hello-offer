@@ -1,0 +1,11 @@
+# 个人简历(含手机号等隐私,不入库)
+张龙-*.html
+简历/
+
+# macOS
+.DS_Store
+
+# 编辑器/IDE
+.vscode/
+.idea/
+*.swp
