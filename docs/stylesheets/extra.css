@@ -91,69 +91,41 @@ body {
   transition: background-color .25s ease, color .25s ease;
 }
 
-/* ---------- 左导航:桌面端默认收起为抽屉 ---------- */
+/* ---------- 左导航:大屏(≥1220px)复用 Material 原生抽屉 ---------- */
+/* 1220px 以下 Material 自带移动抽屉,无需干预 */
 
-.nav-toggle {
-  display: none;
-  position: fixed;
-  top: calc(var(--md-header-height, 2.4rem) + .5rem);
-  left: .6rem;
-  z-index: 6;
-  width: 2.4rem;
-  height: 2.4rem;
-  padding: 0;
-  align-items: center;
-  justify-content: center;
-  background: var(--md-primary-fg-color);
-  color: var(--md-primary-bg-color);
-  border: 1px solid var(--md-default-fg-color--lightest);
-  border-radius: .5rem;
-  cursor: pointer;
-  box-shadow: 0 .15rem .4rem rgba(74, 70, 63, .18);
-}
-.nav-toggle:hover {
-  filter: brightness(1.05);
-}
-.nav-toggle svg { width: 1.2rem; height: 1.2rem; }
-
-.nav-backdrop {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(74, 70, 63, .35);
-  z-index: 5;
-}
-
-@media (min-width: 960px) {
-  /* 桌面端显示抽屉触发按钮 */
-  .nav-toggle { display: inline-flex; }
-
-  /* 默认收起左导航,内容占满 */
-  .md-sidebar--primary {
-    display: none;
+@media (min-width: 76.1875em) {
+  /* 显示页眉自带的汉堡按钮(大屏默认隐藏) */
+  label.md-header__button[for="__drawer"] {
+    display: inline-flex !important;
   }
 
-  /* 打开:覆盖式滑出 */
-  body.nav-open .md-sidebar--primary {
-    display: block;
+  /* 主侧栏改为覆盖式抽屉,默认收起,内容占满宽度 */
+  .md-sidebar--primary {
     position: fixed;
     top: var(--md-header-height, 2.4rem);
     left: 0;
     bottom: 0;
-    width: var(--md-sidebar-primary-width, 12rem);
-    max-width: var(--md-sidebar-primary-width, 12rem);
+    transform: translateX(-100%);
+    transition: transform .28s cubic-bezier(.4, 0, .2, 1);
     z-index: 6;
     background: var(--md-default-bg-color);
-    box-shadow: var(--md-shadow-z2, 0 .2rem .5rem rgba(0,0,0,.1), 0 0 .05rem rgba(0,0,0,.1));
-    border-right: 1px solid var(--md-default-fg-color--lightest);
+    box-shadow: 0 0 .8rem rgba(74, 70, 63, .22);
+  }
+  /* 打开:由 #__drawer 复选框驱动 */
+  #__drawer:checked ~ * .md-sidebar--primary {
+    transform: translateX(0);
   }
 
-  body.nav-open .nav-backdrop {
+  /* 遮罩:复用自带 .md-overlay,点它关闭 */
+  .md-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 5;
+    background: rgba(74, 70, 63, .35);
+  }
+  #__drawer:checked ~ .md-overlay {
     display: block;
   }
 }
 
-/* 移动端隐藏自定义按钮(Material 自带抽屉) */
-@media (max-width: 959.98px) {
-  .nav-toggle { display: none !important; }
-}
