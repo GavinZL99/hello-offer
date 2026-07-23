@@ -95,16 +95,24 @@ body {
 
 .nav-toggle {
   display: none;
+  position: fixed;
+  top: calc(var(--md-header-height, 2.4rem) + .5rem);
+  left: .6rem;
+  z-index: 6;
+  width: 2.4rem;
+  height: 2.4rem;
+  padding: 0;
   align-items: center;
   justify-content: center;
-  width: 2rem;
-  height: 2rem;
-  margin: 0 .1rem 0 .3rem;
-  padding: 0;
-  background: transparent;
-  border: none;
+  background: var(--md-primary-fg-color);
   color: var(--md-primary-bg-color);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: .5rem;
   cursor: pointer;
+  box-shadow: 0 .15rem .4rem rgba(74, 70, 63, .18);
+}
+.nav-toggle:hover {
+  filter: brightness(1.05);
 }
 .nav-toggle svg { width: 1.2rem; height: 1.2rem; }
 

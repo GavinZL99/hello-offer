@@ -6,22 +6,20 @@
   }
 
   ready(function () {
-    var headerInner = document.querySelector('.md-header__inner');
-    if (headerInner) {
-      var btn = document.createElement('button');
-      btn.className = 'md-icon nav-toggle';
-      btn.setAttribute('aria-label', '导航抽屉');
-      btn.type = 'button';
-      btn.innerHTML =
-        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">' +
-        '<path fill="currentColor" d="M3 6h18M3 12h18M3 18h18" ' +
-        'stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>';
-      headerInner.insertBefore(btn, headerInner.firstChild);
-      btn.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.body.classList.toggle('nav-open');
-      });
-    }
+    // 悬浮抽屉按钮(挂在 body,跨页面导航常驻)
+    var btn = document.createElement('button');
+    btn.className = 'nav-toggle';
+    btn.type = 'button';
+    btn.setAttribute('aria-label', '打开导航');
+    btn.innerHTML =
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">' +
+      '<path fill="none" stroke="currentColor" stroke-width="1.8" ' +
+      'stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>';
+    document.body.appendChild(btn);
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      document.body.classList.toggle('nav-open');
+    });
 
     var backdrop = document.createElement('div');
     backdrop.className = 'nav-backdrop';
@@ -34,11 +32,11 @@
       if (e.key === 'Escape') document.body.classList.remove('nav-open');
     });
 
-    // 点击抽屉内链接后收起
-    document.querySelectorAll('.md-sidebar--primary .md-nav__link').forEach(function (a) {
-      a.addEventListener('click', function () {
-        document.body.classList.remove('nav-open');
-      });
+    // 事件委托:点抽屉内链接后收起(适配 instant 导航)
+    document.addEventListener('click', function (e) {
+      if (!document.body.classList.contains('nav-open')) return;
+      var t = e.target.closest && e.target.closest('.md-sidebar--primary a');
+      if (t) document.body.classList.remove('nav-open');
     });
   });
 })();
