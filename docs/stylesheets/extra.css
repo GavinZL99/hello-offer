@@ -1,0 +1,146 @@
+/*
+ * 纸感极简配色 — 覆盖 Material 默认色板
+ * 亮:暖白纸感内容 + 近黑页眉 + 深藏青点缀
+ * 暗:近黑内容 + 深炭页眉 + 雾蓝点缀
+ * 代码块独立底色,描边克制
+ */
+
+:root {
+  --md-default-fg-color:               #1D1D1F;
+  --md-default-fg-color--light:        #59595C;
+  --md-default-fg-color--lighter:      #B0B0B3;
+  --md-default-fg-color--lightest:     #ECECEE;
+
+  --md-default-bg-color:               #FAFAF7;
+  --md-default-bg-color--light:       #F3F3EE;
+  --md-default-bg-color--lighter:      #ECECE6;
+  --md-default-bg-color--lightest:     #E4E4DE;
+}
+
+/* ---------- 亮色 ---------- */
+[data-md-color-scheme="default"] {
+  --md-default-fg-color:               #1D1D1F;
+  --md-default-fg-color--light:        #59595C;
+  --md-default-fg-color--lighter:      #B0B0B3;
+  --md-default-fg-color--lightest:     #ECECEE;
+  --md-default-bg-color:               #FAFAF7;
+  --md-default-bg-color--light:        #F3F3EE;
+  --md-default-bg-color--lighter:      #ECECE6;
+  --md-default-bg-color--lightest:     #E4E4DE;
+
+  /* 页眉/主色:近黑,克制有重量感 */
+  --md-primary-fg-color:               #1D1D1F;
+  --md-primary-fg-color--light:        #3A3A3D;
+  --md-primary-fg-color--dark:         #000000;
+  --md-primary-bg-color:               #FAFAF7;
+  --md-primary-bg-color--light:        #B0B0B3;
+
+  /* 点缀:深藏青(链接/激活/聚焦) */
+  --md-accent-fg-color:                #0066CC;
+  --md-accent-fg-color--transparent:   rgba(0, 102, 204, .10);
+  --md-accent-bg-color:                #0066CC;
+  --md-accent-bg-color--light:         #4D94DB;
+
+  --md-typeset-a-color:                #0066CC;
+
+  /* 代码块:纸感微灰底 + 细边 */
+  --md-code-bg-color:                  #F6F6F4;
+  --md-code-fg-color:                  #1D1D1F;
+  --md-code-hl-color:                  rgba(0, 102, 204, .12);
+
+  --md-hl:                             #0066CC; /* 内联代码点缀 */
+}
+
+/* ---------- 暗色 ---------- */
+[data-md-color-scheme="slate"] {
+  --md-default-fg-color:               #E6E6E6;
+  --md-default-fg-color--light:        #A0A0A2;
+  --md-default-fg-color--lighter:      #606062;
+  --md-default-fg-color--lightest:     #2A2A2D;
+  --md-default-bg-color:               #121214;
+  --md-default-bg-color--light:        #1A1A1D;
+  --md-default-bg-color--lighter:      #222226;
+  --md-default-bg-color--lightest:    #2A2A2D;
+
+  /* 页眉:深炭,比内容更沉 */
+  --md-primary-fg-color:               #0D0D0F;
+  --md-primary-fg-color--light:        #1A1A1D;
+  --md-primary-fg-color--dark:         #000000;
+  --md-primary-bg-color:               #E6E6E6;
+  --md-primary-bg-color--light:        #606062;
+
+  /* 点缀:雾蓝 */
+  --md-accent-fg-color:                #7AA2F7;
+  --md-accent-fg-color--transparent:   rgba(122, 162, 247, .12);
+  --md-accent-bg-color:                #7AA2F7;
+  --md-accent-bg-color--light:         #9DB8FA;
+
+  --md-typeset-a-color:                #7AA2F7;
+
+  --md-code-bg-color:                  #0D0D0F;
+  --md-code-fg-color:                  #E6E6E6;
+  --md-code-hl-color:                  rgba(122, 162, 247, .14);
+}
+
+/* ---------- 细节打磨 ---------- */
+
+/* 页眉底部一根细线,取代默认阴影,更编辑风 */
+.md-header {
+  box-shadow: none;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+}
+
+/* 暗色下页眉分隔线提亮 */
+[data-md-color-scheme="slate"] .md-header {
+  border-bottom: 1px solid var(--md-default-bg-color--lighter);
+}
+
+/* 侧边栏:标题与当前项点缀色 */
+.md-nav__item .md-nav__link--passed,
+.md-nav__item .md-nav__link--active {
+  color: var(--md-accent-fg-color);
+}
+
+/* 代码块:圆角 + 细边 + 等宽 */
+.md-typeset code,
+.md-typeset pre > code {
+  background-color: var(--md-code-bg-color);
+  border-radius: .35rem;
+}
+.md-typeset code:not(pre > code) {
+  padding: .1em .35em;
+  border: 1px solid var(--md-default-fg-color--lightest);
+}
+[data-md-color-scheme="slate"] .md-typeset code:not(pre > code) {
+  border-color: var(--md-default-bg-color--lighter);
+}
+.md-typeset pre {
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: .5rem;
+}
+[data-md-color-scheme="slate"] .md-typeset pre {
+  border-color: var(--md-default-bg-color--lighter);
+}
+
+/* 表格:表头点底,分隔线更轻 */
+.md-typeset table:not([class]) th {
+  background-color: var(--md-default-bg-color--light);
+  border-bottom: 1px solid var(--md-default-fg-color--lighter);
+}
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) th {
+  background-color: var(--md-default-bg-color--lighter);
+  border-bottom: 1px solid var(--md-default-bg-color--lightest);
+}
+
+/* 链接:hover 下沉一点透明度,过渡顺滑 */
+.md-typeset a {
+  transition: color .15s ease;
+}
+.md-typeset a:hover {
+  filter: brightness(1.08);
+}
+
+/* 主题切换过渡平滑 */
+body {
+  transition: background-color .25s ease, color .25s ease;
+}
