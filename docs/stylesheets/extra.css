@@ -59,6 +59,12 @@
     width: 9rem;
     max-width: 9rem;
   }
+  /* 右侧目录稍宽(13.5rem≈270px) */
+  .md-sidebar--secondary {
+    flex: 0 0 13.5rem;
+    width: 13.5rem;
+    max-width: 13.5rem;
+  }
 }
 
 /* 侧边栏当前项点缀色 */
