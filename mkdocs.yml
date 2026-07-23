@@ -1,0 +1,122 @@
+site_name: 个人面试知识总结
+site_description: 按领域分类的面试知识沉淀,看到题能归类、归类后能套套路、套不上能讲清为什么。
+site_url: https://gavinzl99.github.io/hello-offer/
+repo_url: https://github.com/GavinZL99/hello-offer
+repo_name: GavinZL99/hello-offer
+docs_dir: docs
+
+theme:
+  name: material
+  language: zh
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.indexes
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.select
+    - content.action.view
+    - content.action.edit
+    - toc.follow
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: 切换暗色
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: 切换亮色
+  font:
+    text: Noto Sans SC
+    code: JetBrains Mono
+  icon:
+    logo: material/bookshelf
+
+plugins:
+  - search:
+      lang:
+        - en
+        - ja
+  - tags
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - attr_list
+  - md_in_html
+  - def_list
+  - footnotes
+  - tables
+  - toc:
+      permalink: true
+      toc_depth: 3
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/GavinZL99/hello-offer
+
+nav:
+  - 首页: index.md
+  - 算法刷题:
+      - 总览: 算法刷题/README.md
+      - 01 滑动窗口: 算法刷题/01-滑动窗口.md
+      - 02 动态规划: 算法刷题/02-动态规划.md
+      - 03 双指针: 算法刷题/03-双指针.md
+      - 04 回溯法: 算法刷题/04-回溯法.md
+      - 05 前缀和与差分: 算法刷题/05-前缀和.md
+      - 06 二叉树(DFS/BFS): 算法刷题/06-二叉树.md
+      - 07 二分查找: 算法刷题/07-二分查找.md
+      - 08 堆与TopK: 算法刷题/08-堆与TopK.md
+      - 09 技巧题与反直觉套路: 算法刷题/09-技巧题与反直觉套路.md
+  - 后端:
+      - Java:
+          - Java 并发: 后端/Java/Java并发.md
+          - JVM: 后端/Java/JVM.md
+          - Spring: 后端/Java/Spring.md
+      - 中间件:
+          - MySQL: 后端/中间件/MySQL.md
+          - Redis: 后端/中间件/Redis.md
+          - 消息队列: 后端/中间件/消息队列.md
+      - 领域建模: 后端/领域建模/领域建模.md
+      - 计算机网络: 后端/计算机网络/计算机网络.md
+      - 后端场景题: 后端/后端场景题.md
+  - Agent / AI:
+      - Agent 开发(总览): Agent/Agent开发.md
+      - Agent 协议 MCP/A2A/OpenAPI: Agent/Agent协议-MCP-A2A-OpenAPI.md
+      - Agent 记忆: Agent/Agent记忆.md
+      - Agent 安全: Agent/Agent安全.md
+      - Agent 运行优化: Agent/Agent运行优化.md
+      - 工具调用: Agent/工具调用.md
+      - RAG: Agent/RAG.md
+      - ReAct 执行链路: Agent/ReAct执行链路.md
+      - 多智能体协作: Agent/多智能体协作.md
+      - 上下文管理与长对话稳定: Agent/上下文管理与长对话稳定.md
+      - 开源 Agent 源码解析: Agent/开源Agent源码解析.md
+  - 常用面试题:
+      - 常用面试题总结: 常用面试题总结.md
