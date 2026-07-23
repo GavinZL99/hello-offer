@@ -19,24 +19,11 @@ theme:
     - search.share
     - content.code.copy
     - content.code.select
-    - content.action.view
-    - content.action.edit
     - toc.follow
   palette:
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
-      primary: indigo
-      accent: indigo
-      toggle:
-        icon: material/weather-night
-        name: 切换暗色
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      primary: indigo
-      accent: indigo
-      toggle:
-        icon: material/weather-sunny
-        name: 切换亮色
+    scheme: default
+    primary: custom
+    accent: custom
   font:
     text: Noto Sans SC
     code: JetBrains Mono
@@ -78,6 +65,9 @@ markdown_extensions:
 
 extra_css:
   - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/extra.js
 
 extra:
   social:
