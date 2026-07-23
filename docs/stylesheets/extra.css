@@ -117,8 +117,9 @@ body {
     transform: translateX(0);
   }
 
-  /* 遮罩:复用自带 .md-overlay,点它关闭 */
+  /* 遮罩:复用自带 .md-overlay,点它关闭;默认隐藏,仅打开时显示 */
   .md-overlay {
+    display: none;
     position: fixed;
     inset: 0;
     z-index: 5;
