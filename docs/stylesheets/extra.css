@@ -1,10 +1,11 @@
 /*
- * 莫兰迪浅色配色 + 加宽内容 + 左导航抽屉
+ * 莫兰迪浅色配色 + 加宽内容 + 左侧栏收窄
  * 背景:暖石浅灰  文字:柔暖炭  页眉:雾灰豆沙绿  点缀:陶土
  */
 
 :root,
 [data-md-color-scheme="default"] {
+  --md-sidebar-primary-width:          11rem;
   --md-default-fg-color:               #4A463F;
   --md-default-fg-color--light:        #8B857B;
   --md-default-fg-color--lighter:      #B5AFA3;
@@ -50,6 +51,15 @@
 /* 加宽内容区 */
 .md-grid {
   max-width: 1600px;
+}
+
+/* 左侧栏收窄(仅大屏,不影响移动端抽屉) */
+@media (min-width: 76.1875em) {
+  .md-sidebar--primary {
+    flex: 0 0 11rem;
+    width: 11rem;
+    max-width: 11rem;
+  }
 }
 
 /* 侧边栏当前项点缀色 */
